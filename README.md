@@ -1,24 +1,23 @@
-# README
+# DoubbleGDP Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This App enables users to create a todo list, and updates the list when it done.
 
-Things you may want to cover:
+## Project Setup
 
-* Ruby version
+* Clone this repo
+* Run `bundle install`
+* Run `rails db:migrate`
+* Run `npm install`
+* Run `rails server`
+* Run `./bin/webpack-dev-server`
 
-* System dependencies
 
-* Configuration
+## Ruby version
+* 2.7.1
 
-* Database creation
+## Database
+* sqlite
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Testing
+* run `rspec`
+* run `npm run test`

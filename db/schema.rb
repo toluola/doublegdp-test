@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_103649) do
   create_table "lists", force: :cascade do |t|
     t.string "description", null: false
     t.string "time"
-    t.string "avatar", default: "https://res.cloudinary.com/dvcc8ctjw/image/upload/v1592741995/icons8-user-24.png"
+    t.string "avatar", default: "https://res.cloudinary.com/dvcc8ctjw/image/upload/v1592741995/icons8-user-24.png", null: false
     t.boolean "checked", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

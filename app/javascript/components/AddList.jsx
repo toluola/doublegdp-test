@@ -3,8 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 
 const AddList = props => {
-  console.log()
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     description: "",
     avatar: ""
   })
@@ -16,6 +15,8 @@ const AddList = props => {
     });
   };
 
+  const { description, avatar } = formData
+
   const handleSubmit = async e => {
     e.preventDefault()
     const url = `/lists/create`
@@ -26,7 +27,7 @@ const AddList = props => {
         "X-CSRF-Token": token,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(avatar === "" ? {description} : formData)
     })
 
     if (createList) {

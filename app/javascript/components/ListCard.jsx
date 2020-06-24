@@ -1,35 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import useFetch from "../utils/useFetch"
 
-const ListCard = props => {
-  const [checked, setChecked] = useState(false)
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasError, setHasError] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
-  const url = "lists/index"
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-      try {
-        const response = await fetch(url)
-        const result = await response.json()
-        if (response.ok) {
-          setData(result)
-        } else {
-          setHasError(true)
-          setErrorMessage(result)
-        }
-        setIsLoading(false)
-      } catch (err) {
-        setHasError(true)
-        setErrorMessage(err.message)
-        setIsLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
+const ListCard = () => {
+  const { data, isLoading } = useFetch("/lists/index");
 
   const checkBoxOnclick = async (id) => {
     const url = `/lists/${id}`
@@ -43,18 +17,22 @@ const ListCard = props => {
     });
 
     if (updateList) {
-      setChecked("true")
+      window.location.reload(false)
     }
   }
 
+  const noList = <div>No item available. Please add an item</div>
+  const listLoading = <div>Loading...</div>
+
   return (
     <div>
-      {data.map(list => (
-        <ListWrapper key={list.id} status={checked}>
+      {isLoading && listLoading}
+      {data.message === "No item available. Please add an item" && noList}
+      {data.length > 0 && data.map(list => (
+        <ListWrapper key={list.id}>
           <img src={list.avatar} alt="user-avatar" height="50" width="50" />
           <p className="description">{list.description}</p>
-          {checked ? (<div>checked</div>) : null} 
-          {list.checked ? (<p className="date">{list.time}</p>) : (<div className="check-box"><input type="checkbox" onClick={() => checkBoxOnclick(list.id)}/></div>)}
+          {list.checked ? (<p className="date">{list.time}</p>) : (<div className="check-box"><input type="checkbox" onClick={() => checkBoxOnclick(list.id)} /></div>)}
         </ListWrapper>
       ))}
     </div>

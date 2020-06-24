@@ -1,7 +1,11 @@
 class ListsController < ApplicationController
   def index
     lists = List.all.order(created_at: :desc)
-    render json: lists
+    if lists.length == 0 
+      render json: { message: "No item available. Please add an item" }
+    else
+      render json: lists
+    end
   end
 
   def create 

@@ -69,6 +69,12 @@ button {
   border-radius: 5px;
   margin-left: 120px;
 }
+@media only screen and (device-width: 768px){
+  margin-left: 200px;
+  input {
+    width: 60%;
+  }
+}
 `
 
 export default AddList;

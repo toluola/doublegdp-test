@@ -50,15 +50,21 @@ const ListWrapper = styled.div`
     flex-basis: 200px;
     display: flex;
     align-items: center;
+    text-align: justify;
   }
   .date {
     font-size: 15px;
+    margin-left: 15px;
   }
   .check-box {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 50px;
+    margin-left: 15px;
+  }
+  @media only screen and (device-width: 768px) {
+    margin-left: 200px;
   }
 `
 

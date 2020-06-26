@@ -21,3 +21,6 @@ This App enables users to create a todo list, and updates the list when it done.
 ## Testing
 * run `rspec`
 * run `npm run test`
+
+## Heroku link
+* https://doublegdp-test.herokuapp.com/
